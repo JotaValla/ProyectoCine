@@ -30,7 +30,7 @@
               <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               <Component id="txtIdSalaAsientoBuscar" min="-2" pref="215" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnCargarAsientoSala" min="-2" pref="209" max="-2" attributes="0"/>
+              <Component id="btnCargarPeliculaSala" min="-2" pref="209" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -59,9 +59,9 @@
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="jLabel6" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtCodigoBuscarAsiento" min="-2" pref="103" max="-2" attributes="0"/>
+                      <Component id="txtCodigoBuscarPelicula" min="-2" pref="103" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnCargarAsiento" min="-2" pref="169" max="-2" attributes="0"/>
+                      <Component id="btnCargarPelicula" min="-2" pref="169" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -78,10 +78,10 @@
                       <Component id="btnCargarSala" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel7" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                       <Component id="txtCodigoBuscarSala" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCodigoBuscarAsiento" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCodigoBuscarPelicula" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="btnCargarAsiento" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="btnCargarPelicula" min="-2" pref="22" max="-2" attributes="0"/>
                       <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -93,9 +93,9 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtIdSalaAsientoBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnCargarAsientoSala" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCargarPeliculaSala" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   <Component id="jScrollPane3" min="-2" pref="235" max="-2" attributes="0"/>
@@ -158,9 +158,6 @@
                     <Column editable="false" title="Tipo de sala" type="java.lang.String"/>
                   </Table>
                 </Property>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
-                </Property>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtSalasMouseClicked"/>
@@ -174,7 +171,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Tabla de Asientos"/>
+            <TitledBorder title="Tabla de Peliculas"/>
           </Border>
         </Property>
       </Properties>
@@ -213,18 +210,18 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jtAsientos">
+            <Component class="javax.swing.JTable" name="jtPeliculas">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="3" rowCount="4">
-                    <Column editable="false" title="Codigo del asiento" type="java.lang.Integer"/>
-                    <Column editable="false" title="Fila " type="java.lang.String"/>
-                    <Column editable="false" title="Columna" type="java.lang.Integer"/>
+                    <Column editable="false" title="Codigo de la pelicula" type="java.lang.Integer"/>
+                    <Column editable="false" title="Nombre de la pelicula" type="java.lang.String"/>
+                    <Column editable="false" title="Genero de la pelicula" type="java.lang.String"/>
                   </Table>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtAsientosMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtPeliculasMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
@@ -246,6 +243,21 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel1" min="-2" pref="114" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txtIDSala" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel2" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="txtIDPelicula" min="-2" pref="200" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="btnGuardar" min="-2" pref="91" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -253,30 +265,10 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnNuevo" min="-2" pref="92" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnEliminar" pref="114" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel4" min="-2" pref="91" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel1" min="-2" pref="114" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txtIDSala" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Component id="jcbDisponibilidad" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel2" min="-2" pref="114" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="txtIDAsiento" min="-2" pref="200" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
+                              <Component id="btnSalir" max="32767" attributes="0"/>
+                              <Component id="btnEliminar" pref="114" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnSalir" min="-2" pref="91" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -286,23 +278,19 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtIDSala" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtIDAsiento" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtIDPelicula" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jcbDisponibilidad" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnSalir" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="37" max="32767" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -324,10 +312,10 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Codigo del asiento:"/>
+            <Property name="text" type="java.lang.String" value="Codigo de la pelicula:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtIDAsiento">
+        <Component class="javax.swing.JTextField" name="txtIDPelicula">
         </Component>
         <Component class="javax.swing.JButton" name="btnGuardar">
           <Properties>
@@ -344,24 +332,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Disponibilidad"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jcbDisponibilidad">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="Ocupado"/>
-                <StringItem index="1" value="Disponible"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btnNuevo">
           <Properties>
@@ -396,40 +366,39 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTAsientoSala">
+        <Component class="javax.swing.JTable" name="jTPeliculaSala">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="4">
-                <Column editable="true" title="Asiento" type="java.lang.Integer"/>
-                <Column editable="true" title="Sala" type="java.lang.Integer"/>
-                <Column editable="true" title="Disponibilidad" type="java.lang.Boolean"/>
+              <Table columnCount="2" rowCount="4">
+                <Column editable="true" title="ID Sala" type="java.lang.Integer"/>
+                <Column editable="true" title="ID Pelicula" type="java.lang.Integer"/>
               </Table>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTAsientoSalaMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTPeliculaSalaMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Codio del asiento-sala para una busqueda especifica:"/>
+        <Property name="text" type="java.lang.String" value="Codigo de la pelicula-sala para una busqueda especifica:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtIdSalaAsientoBuscar">
     </Component>
-    <Component class="javax.swing.JButton" name="btnCargarAsientoSala">
+    <Component class="javax.swing.JButton" name="btnCargarPeliculaSala">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cargar Tabla"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCargarAsientoSalaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCargarPeliculaSalaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nro del asiento a buscar"/>
+        <Property name="text" type="java.lang.String" value="Nro de la pelicula a buscar:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnCargarSala">
@@ -447,11 +416,11 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtCodigoBuscarSala">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtCodigoBuscarAsiento">
+    <Component class="javax.swing.JTextField" name="txtCodigoBuscarPelicula">
     </Component>
-    <Component class="javax.swing.JButton" name="btnCargarAsiento">
+    <Component class="javax.swing.JButton" name="btnCargarPelicula">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cargar tabla de asientos"/>
+        <Property name="text" type="java.lang.String" value="Cargar tabla de peliculas"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>
@@ -459,7 +428,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCargarAsientoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCargarPeliculaActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

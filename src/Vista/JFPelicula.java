@@ -5,6 +5,7 @@ import Negocio.OpcionesTabla;
 import java.awt.event.ActionEvent;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 //@author Jimmy Valladares
@@ -17,7 +18,7 @@ public class JFPelicula extends javax.swing.JFrame {
     Conexion conexion;
     OpcionesTabla operacionesTabla;
     ActionEvent evt = null;
-
+    
     public JFPelicula() {
         initComponents();
         operacionesTabla = new OpcionesTabla();
@@ -26,6 +27,13 @@ public class JFPelicula extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
     }
 
+    //Getters and setters
+    public JTable getJtPeliculas() {
+        return jtPeliculas;
+    }
+    public void setJtPeliculas(JTable jtPeliculas) {
+        this.jtPeliculas = jtPeliculas;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -136,6 +144,11 @@ public class JFPelicula extends javax.swing.JFrame {
         jLabel4.setText("Género de la película");
 
         jCBGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Accion", "Terror", "Comedia", "Drama", "Animados", "Suspenso", "Infantil", " " }));
+        jCBGenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBGeneroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -416,6 +429,9 @@ public class JFPelicula extends javax.swing.JFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void jCBGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBGeneroActionPerformed
+    }//GEN-LAST:event_jCBGeneroActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

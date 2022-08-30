@@ -1,6 +1,6 @@
 package Negocio;
 
-import Vista.Login;
+import Vista.JFCineUsuario;
 
 /**
  * @author Jimmy
@@ -8,8 +8,8 @@ import Vista.Login;
 public class Principal {
 
     public static void main(String[] args) {
-        Login jflogin = new Login();
-        jflogin.setVisible(true);
+        JFCineUsuario programa = new JFCineUsuario();
+        programa.setVisible(true);
     }
     
 }

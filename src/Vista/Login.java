@@ -277,7 +277,7 @@ public class Login extends javax.swing.JFrame {
             if (this.userTxt.getText().equals("root")&&                    
                     Arrays.equals(this.passTxt.getPassword(), new char []{'1','2','3','4'}))
             {
-                javax.swing.JOptionPane.showMessageDialog(this, "Intento de login con los datos:\nUsuario: " + userTxt.getText() + "\nContraseña: " + String.valueOf(passTxt.getPassword()), "LOGIN", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this, "INGRESO CORRECTO A SU BASE DE DATOS ", "LOGIN", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 Connection consulta=null;
                 consulta = con.getConexion();
                 this.jfmenucine.setVisible(true);

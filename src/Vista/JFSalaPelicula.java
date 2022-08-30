@@ -9,11 +9,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class JFAsientoSala extends javax.swing.JFrame {
+public class JFSalaPelicula extends javax.swing.JFrame {
 
-    JFAsiento tablaAsiento;
     DefaultTableModel modelo;
     PreparedStatement preConsulta;
     Connection obtenerConexion;
@@ -22,22 +22,30 @@ public class JFAsientoSala extends javax.swing.JFrame {
     OpcionesTabla operacionesTabla;
     ActionEvent evt = null;
 
-    public JFAsientoSala() {
+    public JFSalaPelicula() {
         initComponents();
-        tablaAsiento = new JFAsiento();
         operacionesTabla = new OpcionesTabla();
-        btnCargarAsientoActionPerformed(evt);
+        btnCargarPeliculaActionPerformed(evt);
         btnCargarSalaActionPerformed(evt);
-        btnCargarAsientoSalaActionPerformed(evt);
+        btnCargarPeliculaSalaActionPerformed(evt);
         this.setLocationRelativeTo(this);
     }
 
+    //Getters and setters
+    public JTable getjTPeliculaSala() {
+        return jTPeliculaSala;
+    }
+
+    public void setjTPeliculaSala(JTable jTPeliculaSala) {
+        this.jTPeliculaSala = jTPeliculaSala;
+    }
+
     public void limpiar() {
-        txtIdSalaAsientoBuscar.setText("");
         txtIDSala.setText("");
-        txtIDAsiento.setText("");
-        txtCodigoBuscarAsiento.setText("");
+        txtIDPelicula.setText("");
+        txtCodigoBuscarPelicula.setText("");
         txtCodigoBuscarSala.setText("");
+        txtIDPelicula.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -49,30 +57,28 @@ public class JFAsientoSala extends javax.swing.JFrame {
         jtSalas = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtAsientos = new javax.swing.JTable();
+        jtPeliculas = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtIDSala = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtIDAsiento = new javax.swing.JTextField();
+        txtIDPelicula = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jcbDisponibilidad = new javax.swing.JComboBox<>();
         btnNuevo = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTAsientoSala = new javax.swing.JTable();
+        jTPeliculaSala = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         txtIdSalaAsientoBuscar = new javax.swing.JTextField();
-        btnCargarAsientoSala = new javax.swing.JButton();
+        btnCargarPeliculaSala = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         btnCargarSala = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtCodigoBuscarSala = new javax.swing.JTextField();
-        txtCodigoBuscarAsiento = new javax.swing.JTextField();
-        btnCargarAsiento = new javax.swing.JButton();
+        txtCodigoBuscarPelicula = new javax.swing.JTextField();
+        btnCargarPelicula = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ASIENTO SALA");
@@ -105,7 +111,6 @@ public class JFAsientoSala extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jtSalas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jtSalas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtSalasMouseClicked(evt);
@@ -134,9 +139,9 @@ public class JFAsientoSala extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabla de Asientos"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabla de Peliculas"));
 
-        jtAsientos.setModel(new javax.swing.table.DefaultTableModel(
+        jtPeliculas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -144,11 +149,11 @@ public class JFAsientoSala extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Codigo del asiento", "Fila ", "Columna"
+                "Codigo de la pelicula", "Nombre de la pelicula", "Genero de la pelicula"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false
@@ -162,12 +167,12 @@ public class JFAsientoSala extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jtAsientos.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtPeliculas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtAsientosMouseClicked(evt);
+                jtPeliculasMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jtAsientos);
+        jScrollPane1.setViewportView(jtPeliculas);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -194,7 +199,7 @@ public class JFAsientoSala extends javax.swing.JFrame {
 
         jLabel1.setText("Codigo de la sala:");
 
-        jLabel2.setText("Codigo del asiento:");
+        jLabel2.setText("Codigo de la pelicula:");
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -209,10 +214,6 @@ public class JFAsientoSala extends javax.swing.JFrame {
                 btnModificarActionPerformed(evt);
             }
         });
-
-        jLabel4.setText("Disponibilidad");
-
-        jcbDisponibilidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ocupado", "Disponible" }));
 
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -243,49 +244,42 @@ public class JFAsientoSala extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtIDSala))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtIDPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 120, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtIDSala))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jcbDisponibilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtIDAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(52, 52, 52)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtIDSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtIDAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jcbDisponibilidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalir))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                    .addComponent(txtIDPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(btnSalir)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnNuevo)
@@ -294,42 +288,42 @@ public class JFAsientoSala extends javax.swing.JFrame {
                 .addGap(17, 17, 17))
         );
 
-        jTAsientoSala.setModel(new javax.swing.table.DefaultTableModel(
+        jTPeliculaSala.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Asiento", "Sala", "Disponibilidad"
+                "ID Sala", "ID Pelicula"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jTAsientoSala.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTPeliculaSala.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTAsientoSalaMouseClicked(evt);
+                jTPeliculaSalaMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(jTAsientoSala);
+        jScrollPane3.setViewportView(jTPeliculaSala);
 
-        jLabel5.setText("Codio del asiento-sala para una busqueda especifica:");
+        jLabel5.setText("Codigo de la pelicula-sala para una busqueda especifica:");
 
-        btnCargarAsientoSala.setText("Cargar Tabla");
-        btnCargarAsientoSala.addActionListener(new java.awt.event.ActionListener() {
+        btnCargarPeliculaSala.setText("Cargar Tabla");
+        btnCargarPeliculaSala.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCargarAsientoSalaActionPerformed(evt);
+                btnCargarPeliculaSalaActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Nro del asiento a buscar");
+        jLabel6.setText("Nro de la pelicula a buscar:");
 
         btnCargarSala.setText("Cargar tabla de salas");
         btnCargarSala.addActionListener(new java.awt.event.ActionListener() {
@@ -340,11 +334,11 @@ public class JFAsientoSala extends javax.swing.JFrame {
 
         jLabel7.setText("Nro de sala para buscarla:");
 
-        btnCargarAsiento.setText("Cargar tabla de asientos");
-        btnCargarAsiento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnCargarAsiento.addActionListener(new java.awt.event.ActionListener() {
+        btnCargarPelicula.setText("Cargar tabla de peliculas");
+        btnCargarPelicula.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnCargarPelicula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCargarAsientoActionPerformed(evt);
+                btnCargarPeliculaActionPerformed(evt);
             }
         });
 
@@ -358,7 +352,7 @@ public class JFAsientoSala extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addComponent(txtIdSalaAsientoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnCargarAsientoSala, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCargarPeliculaSala, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
@@ -382,9 +376,9 @@ public class JFAsientoSala extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigoBuscarAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCodigoBuscarPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCargarAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCargarPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -397,9 +391,9 @@ public class JFAsientoSala extends javax.swing.JFrame {
                         .addComponent(btnCargarSala)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtCodigoBuscarSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtCodigoBuscarAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCodigoBuscarPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCargarAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCargarPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -408,8 +402,8 @@ public class JFAsientoSala extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtIdSalaAsientoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCargarAsientoSala))
-                .addGap(18, 18, 18)
+                    .addComponent(btnCargarPeliculaSala))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -419,27 +413,28 @@ public class JFAsientoSala extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtAsientosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtAsientosMouseClicked
+    private void jtPeliculasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtPeliculasMouseClicked
         preConsulta = null;
         resultadoTabla = null;
         conexion = new Conexion();
         obtenerConexion = conexion.getConexion();
         try {
-            int Fila = jtAsientos.getSelectedRow();
-            String codigo = jtAsientos.getValueAt(Fila, 0).toString();
-            String consulta = "Select * FROM asiento WHERE id_asiento = ?";
+
+            int Fila = jtPeliculas.getSelectedRow();
+            String codigo = jtPeliculas.getValueAt(Fila, 0).toString();
+            String consulta = "Select * FROM pelicula WHERE id_pelicula = ?";
             preConsulta = obtenerConexion.prepareStatement(consulta);
             preConsulta.setString(1, codigo);
             resultadoTabla = preConsulta.executeQuery();
 
             while (resultadoTabla.next()) {
-                txtIDAsiento.setText(resultadoTabla.getString("id_asiento"));
+                txtIDPelicula.setText(resultadoTabla.getString("id_pelicula"));
             }
-            txtIDAsiento.setEnabled(false);
+            txtIDPelicula.setEnabled(false);
         } catch (Exception e) {
             System.out.println(e);
         }
-    }//GEN-LAST:event_jtAsientosMouseClicked
+    }//GEN-LAST:event_jtPeliculasMouseClicked
 
     private void jtSalasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtSalasMouseClicked
         preConsulta = null;
@@ -465,24 +460,24 @@ public class JFAsientoSala extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jtSalasMouseClicked
 
-    private void btnCargarAsientoSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarAsientoSalaActionPerformed
-        String SalaAsientoCargar = txtIdSalaAsientoBuscar.getText();
+    private void btnCargarPeliculaSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarPeliculaSalaActionPerformed
+        String SalaPeliculaCargar = txtIdSalaAsientoBuscar.getText();
         String where = "";
-        String nombreTablaSQL = "asiento_has_sala";
+        String nombreTablaSQL = "sala_has_pelicula";
 
-        String[] columnasNombres = new String[jTAsientoSala.getColumnCount()];
+        String[] columnasNombres = new String[jTPeliculaSala.getColumnCount()];
         for (int i = 0; i < columnasNombres.length; i++) {
-            columnasNombres[i] = jTAsientoSala.getColumnName(i);
+            columnasNombres[i] = jTPeliculaSala.getColumnName(i);
         }
 
-        if (!"".equals(SalaAsientoCargar)) {
-            where = " WHERE asiento_id_asiento = '" + SalaAsientoCargar + "'";
+        if (!"".equals(SalaPeliculaCargar)) {
+            where = " WHERE sala_id_sala = '" + SalaPeliculaCargar + "'";
         }
 
         //modelo de la tabla
         try {
             modelo = new DefaultTableModel();
-            jTAsientoSala.setModel(modelo);
+            jTPeliculaSala.setModel(modelo);
             preConsulta = null;
             resultadoTabla = null;
             conexion = new Conexion();
@@ -492,7 +487,7 @@ public class JFAsientoSala extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-    }//GEN-LAST:event_btnCargarAsientoSalaActionPerformed
+    }//GEN-LAST:event_btnCargarPeliculaSalaActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         limpiar();
@@ -530,24 +525,24 @@ public class JFAsientoSala extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCargarSalaActionPerformed
 
-    private void btnCargarAsientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarAsientoActionPerformed
-        String AsientoACargar = txtCodigoBuscarAsiento.getText();
+    private void btnCargarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarPeliculaActionPerformed
+        String PeliculaACargar = txtCodigoBuscarPelicula.getText();
         String where = "";
-        String nombreTablaSQL = "asiento";
+        String nombreTablaSQL = "pelicula";
 
-        String[] columnasNombres = new String[jtAsientos.getColumnCount()];
+        String[] columnasNombres = new String[jtPeliculas.getColumnCount()];
         for (int i = 0; i < columnasNombres.length; i++) {
-            columnasNombres[i] = jtAsientos.getColumnName(i);
+            columnasNombres[i] = jtPeliculas.getColumnName(i);
         }
 
-        if (!"".equals(AsientoACargar)) {
-            where = " WHERE id_asiento = '" + AsientoACargar + "'";
+        if (!"".equals(PeliculaACargar)) {
+            where = " WHERE id_pelicula = '" + PeliculaACargar + "'";
         }
 
         try {
             //modelo de la tabla
             modelo = new DefaultTableModel();
-            jtAsientos.setModel(modelo);
+            jtPeliculas.setModel(modelo);
 
             preConsulta = null;
             resultadoTabla = null;
@@ -559,107 +554,101 @@ public class JFAsientoSala extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println(e);
         }
-    }//GEN-LAST:event_btnCargarAsientoActionPerformed
+    }//GEN-LAST:event_btnCargarPeliculaActionPerformed
+
+    //Metodo verificar sala
+    public boolean verificarSalaP(int sala) {
+        boolean verificacion = false;
+        int id = 0;
+        for (int i = 0; i < jTPeliculaSala.getRowCount(); i++) {
+            id = Integer.parseInt(jTPeliculaSala.getValueAt(i, 0).toString());
+            if (id != sala) {
+                verificacion = true;
+            } else {
+                verificacion = false;
+                break;
+            }
+        }
+        return verificacion;
+    }
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+
         preConsulta = null;
         modelo = new DefaultTableModel();
-        int cantColumnas = jTAsientoSala.getColumnCount();
+        int cantColumnas = jTPeliculaSala.getColumnCount();
         try {
             conexion = new Conexion();
             obtenerConexion = conexion.getConexion();
-            String consulta = "INSERT INTO asiento_has_sala(asiento_id_asiento, sala_id_sala, disponibilidad) VALUES(?, ?, ?)";
-            Boolean disponibilidad = null;
-            if (jcbDisponibilidad.getSelectedIndex() == 0) {
-                disponibilidad = false;
+            String consulta = "INSERT INTO sala_has_pelicula(sala_id_sala, pelicula_id_pelicula) VALUES(?, ?)";
+            if (verificarSalaP(Integer.parseInt(txtIDSala.getText())) == true) {
+                preConsulta = obtenerConexion.prepareStatement(consulta);
+
+                preConsulta.setString(1, txtIDSala.getText());
+                preConsulta.setString(2, txtIDPelicula.getText());
+
+                preConsulta.execute();
+
+                JOptionPane.showMessageDialog(null, "Relacion Guardada");
+                Object[] fila = new Object[cantColumnas];
+                fila[0] = txtIDSala.getText();
+                fila[1] = txtIDPelicula.getText();
+                modelo.addRow(fila);
+                limpiar();
+                btnCargarPeliculaSalaActionPerformed(evt);
             } else {
-                disponibilidad = true;
+                JOptionPane.showMessageDialog(null, "Esta sala ya esta transmitiendo una pelicula");
             }
 
-            preConsulta = obtenerConexion.prepareStatement(consulta);
-
-            preConsulta.setString(1, txtIDAsiento.getText());
-            preConsulta.setString(2, txtIDSala.getText());
-            preConsulta.setBoolean(3, disponibilidad);
-
-            preConsulta.execute();
-
-            JOptionPane.showMessageDialog(null, "Relacion Guardada");
-            Object[] fila = new Object[cantColumnas];
-            fila[0] = txtIDSala.getText();
-            fila[1] = txtIDAsiento.getText();
-            fila[2] = disponibilidad;
-            modelo.addRow(fila);
-            limpiar();
-            btnCargarAsientoSalaActionPerformed(evt);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al Guardar la relacion");
             System.out.println(e);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void jTAsientoSalaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTAsientoSalaMouseClicked
-
+    private void jTPeliculaSalaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTPeliculaSalaMouseClicked
         preConsulta = null;
         resultadoTabla = null;
         conexion = new Conexion();
         obtenerConexion = conexion.getConexion();
-        String disponibilidad = "";
-        if (jcbDisponibilidad.getSelectedIndex() == 0) {
-            disponibilidad = "false";
-        } else {
-            disponibilidad = "true";
-        }
+
         try {
-            int Fila = jTAsientoSala.getSelectedRow();
-            String asiento = jTAsientoSala.getValueAt(Fila, 0).toString();
-            String sala = jTAsientoSala.getValueAt(Fila, 1).toString();
-            String consulta = "Select * FROM asiento_has_sala WHERE asiento_id_asiento = ? AND sala_id_sala = ?";
+            int Fila = jTPeliculaSala.getSelectedRow();
+            String sala = jTPeliculaSala.getValueAt(Fila, 0).toString();
+            String pelicula = jTPeliculaSala.getValueAt(Fila, 1).toString();
+            String consulta = "Select * FROM sala_has_pelicula WHERE sala_id_sala = ? AND pelicula_id_pelicula = ?";
             preConsulta = obtenerConexion.prepareStatement(consulta);
-            preConsulta.setString(1, asiento);
-            preConsulta.setString(2, sala);
+            preConsulta.setString(1, sala);
+            preConsulta.setString(2, pelicula);
             resultadoTabla = preConsulta.executeQuery();
 
             while (resultadoTabla.next()) {
-                int indice = 0;
-                if (resultadoTabla.getBoolean("disponibilidad") == false) {
-                    indice = 0;
-                } else {
-                    indice = 1;
-                }
                 txtIDSala.setText(resultadoTabla.getString("sala_id_sala"));
-                txtIDAsiento.setText(resultadoTabla.getString("asiento_id_asiento"));
-                jcbDisponibilidad.setSelectedIndex(indice);
+                txtIDPelicula.setText(resultadoTabla.getString("pelicula_id_pelicula"));
             }
-            txtIDAsiento.setEnabled(false);
+            txtIDPelicula.setEnabled(true);
             txtIDSala.setEnabled(false);
         } catch (Exception e) {
             System.out.println(e);
         }
-    }//GEN-LAST:event_jTAsientoSalaMouseClicked
+    }//GEN-LAST:event_jTPeliculaSalaMouseClicked
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         preConsulta = null;
         modelo = new DefaultTableModel();
         conexion = new Conexion();
         obtenerConexion = conexion.getConexion();
-        Boolean disponibilidad = null;
 
-        if (jcbDisponibilidad.getSelectedIndex() == 0) {
-            disponibilidad = false;
-        } else {
-            disponibilidad = true;
-        }
         try {
-            String idAsiento = jTAsientoSala.getValueAt(jTAsientoSala.getSelectedRow(), 0).toString();
-            String idSala = jTAsientoSala.getValueAt(jTAsientoSala.getSelectedRow(), 1).toString();
-            String consulta = "UPDATE asiento_has_sala set disponibilidad = " + disponibilidad + " WHERE asiento_id_asiento = " + idAsiento
-                    + " AND sala_id_sala = " + idSala;
+            String idSala = jTPeliculaSala.getValueAt(jTPeliculaSala.getSelectedRow(), 0).toString();
+            String idPelicula = jTPeliculaSala.getValueAt(jTPeliculaSala.getSelectedRow(), 1).toString();
+            String consulta = "UPDATE sala_has_pelicula set pelicula_id_pelicula = " + txtIDPelicula.getText() + " WHERE sala_id_sala = "
+                    + idSala + " AND pelicula_id_pelicula = " + idPelicula;
             preConsulta = obtenerConexion.prepareStatement(consulta);
             System.out.println(consulta);
             preConsulta.execute();
             JOptionPane.showMessageDialog(null, "Relacion Actualizada");
-            btnCargarAsientoSalaActionPerformed(evt);
+            btnCargarPeliculaSalaActionPerformed(evt);
             limpiar();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al Actualizar el asiento");
@@ -674,17 +663,17 @@ public class JFAsientoSala extends javax.swing.JFrame {
         obtenerConexion = conexion.getConexion();
         int opcion;
         try {
-            int Fila = jTAsientoSala.getSelectedRow();
-            String asiento = jTAsientoSala.getValueAt(Fila, 0).toString();
-            String sala = jTAsientoSala.getValueAt(Fila, 1).toString();
+            int Fila = jTPeliculaSala.getSelectedRow();
+            String sala = jTPeliculaSala.getValueAt(Fila, 0).toString();
+            String pelicula = jTPeliculaSala.getValueAt(Fila, 1).toString();
             String desactivarLlave = "SET FOREIGN_KEY_CHECKS = 0";
-            String consulta = "DELETE FROM asiento_has_sala WHERE asiento_id_asiento = ? AND sala_id_sala = ?";
+            String consulta = "DELETE FROM sala_has_pelicula WHERE sala_id_sala = ? AND pelicula_id_pelicula = ?";
             System.out.println(consulta);
             opcion = JOptionPane.showConfirmDialog(null, "Esta seguro de que desea eliminar la relacion", "Relacion de tablas", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             preConsulta2 = obtenerConexion.prepareStatement(desactivarLlave);
             preConsulta = obtenerConexion.prepareStatement(consulta);
-            preConsulta.setString(1, asiento);
-            preConsulta.setString(2, sala);
+            preConsulta.setString(1, sala);
+            preConsulta.setString(2, pelicula);
             if (opcion == JOptionPane.YES_OPTION) {
                 preConsulta2.execute();
                 preConsulta.execute();
@@ -693,25 +682,25 @@ public class JFAsientoSala extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
-        btnCargarAsientoSalaActionPerformed(evt);
+        btnCargarPeliculaSalaActionPerformed(evt);
         limpiar();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-       this.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFAsientoSala().setVisible(true);
+                new JFSalaPelicula().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCargarAsiento;
-    private javax.swing.JButton btnCargarAsientoSala;
+    private javax.swing.JButton btnCargarPelicula;
+    private javax.swing.JButton btnCargarPeliculaSala;
     private javax.swing.JButton btnCargarSala;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
@@ -720,7 +709,6 @@ public class JFAsientoSala extends javax.swing.JFrame {
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -730,13 +718,12 @@ public class JFAsientoSala extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTAsientoSala;
-    private javax.swing.JComboBox<String> jcbDisponibilidad;
-    private javax.swing.JTable jtAsientos;
+    private javax.swing.JTable jTPeliculaSala;
+    private javax.swing.JTable jtPeliculas;
     private javax.swing.JTable jtSalas;
-    private javax.swing.JTextField txtCodigoBuscarAsiento;
+    private javax.swing.JTextField txtCodigoBuscarPelicula;
     private javax.swing.JTextField txtCodigoBuscarSala;
-    private javax.swing.JTextField txtIDAsiento;
+    private javax.swing.JTextField txtIDPelicula;
     private javax.swing.JTextField txtIDSala;
     private javax.swing.JTextField txtIdSalaAsientoBuscar;
     // End of variables declaration//GEN-END:variables

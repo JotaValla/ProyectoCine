@@ -46,11 +46,13 @@ public class JFMenuCine extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jBCliente = new javax.swing.JButton();
         jBAsientos = new javax.swing.JButton();
-        jBBaseDatos = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
         jBTicket = new javax.swing.JButton();
         jBSala = new javax.swing.JButton();
         jBPelicula = new javax.swing.JButton();
+        jBAsientoSala = new javax.swing.JButton();
+        jBSalaPelicula = new javax.swing.JButton();
+        jBCineUsuari = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CINE");
@@ -81,18 +83,6 @@ public class JFMenuCine extends javax.swing.JFrame {
         jBAsientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAsientosActionPerformed(evt);
-            }
-        });
-
-        jBBaseDatos.setFont(new java.awt.Font("Rum Raisin", 0, 14)); // NOI18N
-        jBBaseDatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/conectado.png"))); // NOI18N
-        jBBaseDatos.setText("Conectar a la base de datos");
-        jBBaseDatos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBBaseDatos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jBBaseDatos.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        jBBaseDatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBBaseDatosActionPerformed(evt);
             }
         });
 
@@ -144,33 +134,76 @@ public class JFMenuCine extends javax.swing.JFrame {
             }
         });
 
+        jBAsientoSala.setFont(new java.awt.Font("Rum Raisin", 0, 14)); // NOI18N
+        jBAsientoSala.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pantalla-de-cine.png"))); // NOI18N
+        jBAsientoSala.setText("Asiento - Sala");
+        jBAsientoSala.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBAsientoSala.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jBAsientoSala.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jBAsientoSala.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAsientoSalaActionPerformed(evt);
+            }
+        });
+
+        jBSalaPelicula.setFont(new java.awt.Font("Rum Raisin", 0, 14)); // NOI18N
+        jBSalaPelicula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pelicula.png"))); // NOI18N
+        jBSalaPelicula.setText("Sala - Película");
+        jBSalaPelicula.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBSalaPelicula.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jBSalaPelicula.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jBSalaPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalaPeliculaActionPerformed(evt);
+            }
+        });
+
+        jBCineUsuari.setFont(new java.awt.Font("Rum Raisin", 0, 14)); // NOI18N
+        jBCineUsuari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pareja.png"))); // NOI18N
+        jBCineUsuari.setText("Menú usuario");
+        jBCineUsuari.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBCineUsuari.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jBCineUsuari.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jBCineUsuari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCineUsuariActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jBCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jBBaseDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(88, 88, 88)
-                        .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(89, 89, 89)
+                                .addComponent(jBSalaPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(93, 93, 93)
+                                .addComponent(jBTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jBCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(68, 68, 68)
+                                .addComponent(jBPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(78, 78, 78)
+                                .addComponent(jBSala, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(117, 117, 117)
+                                .addComponent(jBCineUsuari, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(86, 86, 86)
+                                .addComponent(jBAsientos, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(88, 88, 88)
+                                .addComponent(jBAsientoSala, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jBPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(jBSala, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(jBAsientos, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                        .addComponent(jBTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(136, 136, 136))
+                        .addComponent(jLabel1)
+                        .addGap(226, 226, 226)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,14 +214,16 @@ public class JFMenuCine extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBAsientos, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBSala, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                    .addComponent(jBPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBAsientoSala, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBBaseDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBSalaPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBCineUsuari, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -198,7 +233,7 @@ public class JFMenuCine extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,11 +245,6 @@ public class JFMenuCine extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jBBaseDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBaseDatosActionPerformed
-        Connection consulta=null;
-        consulta = con.getConexion();
-    }//GEN-LAST:event_jBBaseDatosActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         System.exit(0);
@@ -244,6 +274,21 @@ public class JFMenuCine extends javax.swing.JFrame {
         JFPelicula jfpeli = new JFPelicula();
         jfpeli.setVisible(true);
     }//GEN-LAST:event_jBPeliculaActionPerformed
+
+    private void jBAsientoSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAsientoSalaActionPerformed
+        JFAsientoSala jfasientoSala = new JFAsientoSala();
+        jfasientoSala.setVisible(true);
+    }//GEN-LAST:event_jBAsientoSalaActionPerformed
+
+    private void jBSalaPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalaPeliculaActionPerformed
+        JFSalaPelicula jfsalaPeli = new JFSalaPelicula();
+        jfsalaPeli.setVisible(true);
+    }//GEN-LAST:event_jBSalaPeliculaActionPerformed
+
+    private void jBCineUsuariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCineUsuariActionPerformed
+        JFCineUsuario jfmenuUsuario = new JFCineUsuario();
+        jfmenuUsuario.setVisible(true);
+    }//GEN-LAST:event_jBCineUsuariActionPerformed
 
     /**
      * @param args the command line arguments
@@ -282,11 +327,13 @@ public class JFMenuCine extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAsientoSala;
     private javax.swing.JButton jBAsientos;
-    private javax.swing.JButton jBBaseDatos;
+    private javax.swing.JButton jBCineUsuari;
     private javax.swing.JButton jBCliente;
     private javax.swing.JButton jBPelicula;
     private javax.swing.JButton jBSala;
+    private javax.swing.JButton jBSalaPelicula;
     private javax.swing.JButton jBSalir;
     private javax.swing.JButton jBTicket;
     private javax.swing.JLabel jLabel1;

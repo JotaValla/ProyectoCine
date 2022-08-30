@@ -2,7 +2,6 @@ package Vista;
 
 import Negocio.OpcionesTabla;
 import Negocio.Conexion;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.sql.*;
 import javax.swing.JOptionPane;
@@ -31,9 +30,7 @@ public class JFSala extends javax.swing.JFrame {
     public void limpiar() {
         txtCodigoBuscar.setText("");
         txtIdSala.setText("");
-        txtIdPelicula.setText("");
         jCBTipoSala.setSelectedIndex(0);
-        txtIdPelicula.setEnabled(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -49,8 +46,6 @@ public class JFSala extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtIdSala = new javax.swing.JTextField();
-        txtIdPelicula = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jCBTipoSala = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
@@ -65,20 +60,20 @@ public class JFSala extends javax.swing.JFrame {
 
         jtSalas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "ID de la sala", "ID de la pelicula", "Tipo de sala"
+                "ID de la sala", "Tipo de sala"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -147,9 +142,6 @@ public class JFSala extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Código de la película:");
-        jLabel4.setToolTipText("");
-
         jLabel5.setText("Tipo de sala:");
 
         jCBTipoSala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2D", "3D", "4D", "VIP", " " }));
@@ -159,18 +151,15 @@ public class JFSala extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtIdSala, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtIdPelicula)
-                        .addComponent(jCBTipoSala, 0, 227, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jCBTipoSala, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,15 +168,11 @@ public class JFSala extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtIdSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIdPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jCBTipoSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Opciones"));
@@ -288,7 +273,7 @@ public class JFSala extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -308,11 +293,9 @@ public class JFSala extends javax.swing.JFrame {
         }
 
         String nombreTablaSQL = "sala";
-
         if (!"".equals(SalaACargar)) {
             where = " WHERE id_sala = '" + SalaACargar + "'";
         }
-
         try {
             //modelo de la tabla
             modelo = new DefaultTableModel();
@@ -343,11 +326,10 @@ public class JFSala extends javax.swing.JFrame {
         try {
             conexion = new Conexion();
             obtenerConexion = conexion.getConexion();
-            String tablaConAtributos = "sala(id_Pelicula, tipo_de_sala) VALUES(?, ?)";
+            String tablaConAtributos = "sala(tipo_de_sala) VALUES(?)";
 
             String[] columnasNombres = new String[jtSalas.getColumnCount() - 1];
-            columnasNombres[0] = txtIdPelicula.getText();
-            columnasNombres[1] = (String) jCBTipoSala.getSelectedItem();
+            columnasNombres[0] = (String) jCBTipoSala.getSelectedItem();
             operacionesTabla.guardarDatos(preConsulta, obtenerConexion, resultadoTabla, tablaConAtributos, columnasNombres, modelo, cantColumnas);
             JOptionPane.showMessageDialog(null, "Sala Guardada");
             limpiar();
@@ -393,18 +375,15 @@ public class JFSala extends javax.swing.JFrame {
 
             while (resultadoTabla.next()) {
                 txtIdSala.setText(resultadoTabla.getString("id_sala"));
-                txtIdPelicula.setText(resultadoTabla.getString("id_pelicula"));
                 jCBTipoSala.setSelectedItem(resultadoTabla.getString("tipo_de_sala"));
             }
             txtIdSala.setEnabled(false);
-            txtIdPelicula.setEnabled(false);
         } catch (Exception e) {
             System.out.println(e);
         }
     }//GEN-LAST:event_jtSalasMouseClicked
 
     private void txtIdSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdSalaActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtIdSalaActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -448,7 +427,6 @@ public class JFSala extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jCBTipoSala;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -456,7 +434,6 @@ public class JFSala extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtSalas;
     private javax.swing.JTextField txtCodigoBuscar;
-    private javax.swing.JTextField txtIdPelicula;
     private javax.swing.JTextField txtIdSala;
     // End of variables declaration//GEN-END:variables
 

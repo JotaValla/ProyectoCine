@@ -393,7 +393,6 @@ public class JFAsiento extends javax.swing.JFrame {
     }//GEN-LAST:event_jtAsientosMouseClicked
 
     private void txtIdAsientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdAsientoActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtIdAsientoActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
